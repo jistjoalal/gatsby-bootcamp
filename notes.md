@@ -148,3 +148,37 @@ module.exports.createPages = async ({ graphql, actions }) => {
   })
 }
 ```
+
+### render images in markdown pages
+
+```sh
+npm i gatsby-plugin-sharp gatsby-remark-images gatsby-remark-relative-images
+```
+
+`gatsby-config.js`
+
+```js
+// plugins:
+"gatsby-plugin-sharp",
+{
+  resolve: "gatsby-transformer-remark",
+  options: {
+    plugins: [
+      "gatsby-remark-relative-images",
+      {
+        resolve: "gatsby-remark-images",
+        options: {
+          maxWidth: 750,
+          linkImagesToOriginal: false,
+        },
+      },
+    ],
+  },
+},
+```
+
+In source markdown file, specify path relative to the markdown file:
+
+```md
+![Image](./image.png)
+```
