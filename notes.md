@@ -38,7 +38,6 @@ edit `gatsby-config.json`:
 
 ```json
 plugins: [
-  // ...
   {
     resolve: "gatsby-source-filesystem",
     options: {
