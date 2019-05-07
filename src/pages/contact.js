@@ -4,6 +4,6 @@ import Layout from '../components/layout'
 
 export default () =>
   <Layout>
-    <h1>blog page</h1>
-    <p>posts go here</p>
+    <h1>contact page</h1>
+    <p>contact us <a href="http://twitter.com">@twitter</a></p>
   </Layout>

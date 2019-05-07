@@ -5,7 +5,7 @@ import Layout from '../components/layout'
 
 export default () =>
   <Layout>
-    <h1>hello.</h1>
-    <h2>this is a blog written by a person</h2>
-    <p>Need a developer? <Link to="/contact">Contact me</Link></p>
+    <h1>about page</h1>
+    <p>about us!</p>
+    <Link to="/contact">Contact us</Link>
   </Layout>
