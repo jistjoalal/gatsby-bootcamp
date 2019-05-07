@@ -1,23 +1,40 @@
-import React from 'react'
-import { Link } from 'gatsby'
+import React from "react"
+import { Link } from "gatsby"
 
-export default () =>
-  <header>
-    <h1>Gatsby Blog</h1>
+import headerStyles from "./header.module.scss"
+
+const NavLink = ({ children, to }) => (
+  <Link
+    className={headerStyles.navItem}
+    activeClassName={headerStyles.activeNavItem}
+    to={to}
+  >
+    {children}
+  </Link>
+)
+
+export default () => (
+  <header className={headerStyles.header}>
+    <h1>
+      <Link className={headerStyles.title} to="/">
+        Gatsby Blog
+      </Link>
+    </h1>
     <nav>
-      <ul>
+      <ul className={headerStyles.navList}>
         <li>
-          <Link to="/">Home</Link>
+          <NavLink to="/">Home</NavLink>
         </li>
         <li>
-          <Link to="/about">About</Link>
+          <NavLink to="/about">About</NavLink>
         </li>
         <li>
-          <Link to="/contact">Contact</Link>
+          <NavLink to="/contact">Contact</NavLink>
         </li>
         <li>
-          <Link to="/blog">Blog</Link>
+          <NavLink to="/blog">Blog</NavLink>
         </li>
       </ul>
     </nav>
   </header>
+)
