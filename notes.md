@@ -36,7 +36,7 @@ npm i --save-dev gatsby-source-filesystem gatsby-transformer-remark
 
 edit `gatsby-config.json`:
 
-```json
+```js
 plugins: [
   {
     resolve: "gatsby-source-filesystem",
