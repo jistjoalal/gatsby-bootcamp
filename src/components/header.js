@@ -1,5 +1,5 @@
 import React from "react"
-import { Link } from "gatsby"
+import { Link, graphql, useStaticQuery } from "gatsby"
 
 import headerStyles from "./header.module.scss"
 
@@ -13,28 +13,40 @@ const NavLink = ({ children, to }) => (
   </Link>
 )
 
-export default () => (
-  <header className={headerStyles.header}>
-    <h1>
-      <Link className={headerStyles.title} to="/">
-        Gatsby Blog
-      </Link>
-    </h1>
-    <nav>
-      <ul className={headerStyles.navList}>
-        <li>
-          <NavLink to="/">Home</NavLink>
-        </li>
-        <li>
-          <NavLink to="/about">About</NavLink>
-        </li>
-        <li>
-          <NavLink to="/contact">Contact</NavLink>
-        </li>
-        <li>
-          <NavLink to="/blog">Blog</NavLink>
-        </li>
-      </ul>
-    </nav>
-  </header>
-)
+export default () => {
+  const data = useStaticQuery(graphql`
+    {
+      site {
+        siteMetadata {
+          title
+        }
+      }
+    }
+  `)
+
+  return (
+    <header className={headerStyles.header}>
+      <h1>
+        <Link className={headerStyles.title} to="/">
+          {data.site.siteMetadata.title}
+        </Link>
+      </h1>
+      <nav>
+        <ul className={headerStyles.navList}>
+          <li>
+            <NavLink to="/">Home</NavLink>
+          </li>
+          <li>
+            <NavLink to="/about">About</NavLink>
+          </li>
+          <li>
+            <NavLink to="/contact">Contact</NavLink>
+          </li>
+          <li>
+            <NavLink to="/blog">Blog</NavLink>
+          </li>
+        </ul>
+      </nav>
+    </header>
+  )
+}
