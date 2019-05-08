@@ -14,9 +14,9 @@ export default () => (
 
 const PostTitle = ({ node }) => (
   <li key={node.id} className={blogStyles.post}>
-    <Link to={`/blog/${node.fields.slug}`}>
-      <h2>{node.frontmatter.title}</h2>
-      <p>{node.frontmatter.date}</p>
+    <Link to={`/blog/${node.slug}`}>
+      <h2>{node.title}</h2>
+      <p>{node.publishedDate}</p>
     </Link>
   </li>
 )
@@ -24,19 +24,15 @@ const PostTitle = ({ node }) => (
 const allMarkdownPosts = () =>
   useStaticQuery(graphql`
     {
-      allMarkdownRemark {
+      allContentfulBlogPost(sort: { fields: publishedDate, order: DESC }) {
         edges {
           node {
             id
-            frontmatter {
-              title
-              date
-            }
-            fields {
-              slug
-            }
+            title
+            slug
+            publishedDate(formatString: "MMMM Do, YYYY")
           }
         }
       }
     }
-  `).allMarkdownRemark.edges
+  `).allContentfulBlogPost.edges
