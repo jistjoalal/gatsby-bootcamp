@@ -205,3 +205,26 @@ export default () => <h1 className={styles.header}>Hooray</h1>
   color: black;
 }
 ```
+
+## markdown syntax highlighting using [prismjs](https://prismjs.com/)
+
+```sh
+npm install --save gatsby-remark-prismjs prismjs
+```
+
+```js
+// gatsby-config.js
+// - plugins:
+{
+  resolve: `gatsby-transformer-remark`,
+  options: {
+    plugins: [
+      `gatsby-remark-prismjs`,
+    ]
+  }
+}
+
+// gatsby-browser.js
+require("prismjs/themes/prism-okaidia.css")
+// more themes @ https://github.com/PrismJS/prism/tree/master/themes
+```
