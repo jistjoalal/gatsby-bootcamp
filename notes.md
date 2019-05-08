@@ -182,3 +182,26 @@ In source markdown file, specify path relative to the markdown file:
 ```md
 ![Image](./image.png)
 ```
+
+## use SCSS w/ gatsby
+
+```sh
+npm install --save node-sass gatsby-plugin-sass
+```
+
+## use css modules to style react components
+
+React:
+
+```jsx
+import styles from "./component.module.scss"
+export default () => <h1 className={styles.header}>Hooray</h1>
+```
+
+`component.module.scss` (same dir as component)
+
+```scss
+.header {
+  color: black;
+}
+```
